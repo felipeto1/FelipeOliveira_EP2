@@ -22,6 +22,8 @@ turtle.setpos(-145.00,15.00)
 turtle.pendown()
 turtle.hideturtle()
 sup=0
+d=0
+v=0
 while sup<=11: #definindo 11 rodadas
     erros=0
     h=0
@@ -38,7 +40,7 @@ while sup<=11: #definindo 11 rodadas
         turtle.penup()
         turtle.forward(5)
         turtle.pendown()
-    while (h<=tamanho or erros!=7): #criando o loop principal
+    while (h<tamanho or erros<7): #criando o loop principal
         letra=window.textinput('letra','escolha uma letra') #janela deescrever a letra
         if letra in escolha:
             if letra==escolha[0]: #condições para posicionamento das letras
@@ -49,37 +51,37 @@ while sup<=11: #definindo 11 rodadas
                 h+=1
             if letra==escolha[1]:
                 turtle.penup()
-                turtle.setpos(-115.00,20.00)
+                turtle.setpos(-110.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[2]:
                 turtle.penup()
-                turtle.setpos(-95.00,20.00)
+                turtle.setpos(-85.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[3]:
                 turtle.penup()
-                turtle.setpos(-75.00,20.00)
+                turtle.setpos(-60.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[4]:
                 turtle.penup()
-                turtle.setpos(-55.00,20.00)
+                turtle.setpos(-35.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[5]:
                 turtle.penup()
-                turtle.setpos(-35.00,20.00)
+                turtle.setpos(-10.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[6]:
                 turtle.penup()
-                turtle.setpos(-15.00,20.00)
+                turtle.setpos(15.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
@@ -97,73 +99,73 @@ while sup<=11: #definindo 11 rodadas
                 h+=1
             if letra==escolha[9]:
                 turtle.penup()
-                turtle.setpos(35.00,20.00)
+                turtle.setpos(40.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[10]:
                 turtle.penup()
-                turtle.setpos(55.00,20.00)
+                turtle.setpos(65.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[11]:
                 turtle.penup()
-                turtle.setpos(75.00,20.00)
+                turtle.setpos(90.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[12]:
                 turtle.penup()
-                turtle.setpos(95.00,20.00)
+                turtle.setpos(115.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[13]:
                 turtle.penup()
-                turtle.setpos(115.00,20.00)
+                turtle.setpos(140.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[14]:
                 turtle.penup()
-                turtle.setpos(135.00,20.00)
+                turtle.setpos(165.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[15]:
                 turtle.penup()
-                turtle.setpos(155.00,20.00)
+                turtle.setpos(190.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[16]:
                 turtle.penup()
-                turtle.setpos(175.00,20.00)
+                turtle.setpos(215.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[17]:
                 turtle.penup()
-                turtle.setpos(195.00,20.00)
+                turtle.setpos(240.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[18]:
                 turtle.penup()
-                turtle.setpos(215.00,20.00)
+                turtle.setpos(265.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[19]:
                 turtle.penup()
-                turtle.setpos(235.00,20.00)
+                turtle.setpos(290.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
             if letra==escolha[20]:
                 turtle.penup()
-                turtle.setpos(255.00,20.00)
+                turtle.setpos(315.00,20.00)
                 turtle.pendown()
                 turtle.write(letra)
                 h+=1
@@ -226,17 +228,24 @@ while sup<=11: #definindo 11 rodadas
             turtle.setpos(00.00,100.00)
             turtle.pendown()
             turtle.write('PERDEU!') #Imprimindo notificação de perda
+            d+=1
             
         if h==tamanho:
             turtle.penup()
             turtle.setpos(00.00,100.00)
             turtle.pendown()
             turtle.write('GANHOU!') #imprimindo notificação de vitória
+            v+=1
             
         turtle.penup()
         turtle.setpos(-145.00,15.00)
         turtle.pendown()
-    sup+=1
+        turtle.write('Sua média de chutes por acertos foi: ', erros+h/tamanho)
+    jd=window.textinput('Restart','Deseja jogar denovo?')
+    for s in jd:
+        sup+=1
+    for n in jd:
+        sup+=20
     turtle.reset() #resetando
     turtle.setpos(320.00,0.00) #recriando a forca
     turtle.setpos(-275.00,0.00)
@@ -247,4 +256,10 @@ while sup<=11: #definindo 11 rodadas
     turtle.setpos(-145.00,15.00)
     turtle.pendown()
     turtle.hideturtle()
+    
+turtle.penup() #Criando o Score
+turtle.setpos(100.00,60.00)
+turtle.pendown()
+turtle.write('Seu score foi:', v)
+turtle.write('O score do PC foi:', d)
 window.exitonclick()
